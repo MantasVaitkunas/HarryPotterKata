@@ -7,7 +7,13 @@
  */
 
 class Book {
+    private $iBookId;
     private $iPrice = 8;
+
+    function __construct( $iBookId )
+    {
+        $this->iBookId = $iBookId;
+    }
 
     /**
      * @return int

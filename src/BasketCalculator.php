@@ -19,11 +19,15 @@ class BasketCalculator {
     }
 
     /**
-     * @param $aBooks
+     * @param BookList $oBookList
      * @return int
      */
-    public function calculate( $aBooks )
+    public function calculate( $oBookList )
     {
-        return count( $aBooks ) * $this->getBooksPrice();
+        $dResult = 0;
+        foreach ( $oBookList as $oBook ) {
+            $dResult += $oBook->getPrice();
+        }
+        return $dResult;
     }
 }

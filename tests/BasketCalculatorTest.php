@@ -6,27 +6,46 @@
  * Time: 10:18 AM
  */
 
-class BasketCalculatorTest extends PHPUnit_Framework_TestCase {
+class BasketCalculatorTest extends PHPUnit_Framework_TestCase
+{
 
     public function providerCalculate()
     {
         return array(
-            array( array(1), 8 ),
-            array( array(1, 2), 16 ),
-            array( array(1, 2, 3), 24 ),
-            array( array(1, 1, 1), 24 ),
+            array(
+                $this->_getBookList( array( 1 ) ), 8
+            ),
+            array(
+                $this->_getBookList( array( 1, 2 ) ), 16
+            ),
+            array(
+                $this->_getBookList( array( 1, 1 ) ), 15.2
+            ),
         );
     }
 
     /**
      * @dataProvider providerCalculate
-     * @param $aBooks
-     * @param $iResult
      */
-    public function testCalculate( $aBooks, $iResult )
+    public function testCalculate( $oBookList, $dResult )
     {
         $oBasketCalculator = new BasketCalculator();
 
-        $this->assertSame( $iResult, $oBasketCalculator->calculate( $aBooks ) );
+        $this->assertSame( $dResult, $oBasketCalculator->calculate( $oBookList ) );
+    }
+
+    /**
+     * @param $aBooksIds
+     * @return BookList
+     */
+    protected function _getBookList( $aBooksIds )
+    {
+        $oBookList = new BookList();
+        foreach ( $aBooksIds as $iBookId ) {
+            $oBook = new Book( $iBookId );
+            $oBookList->addBook( $oBook );
+        }
+
+        return $oBookList;
     }
 }

@@ -10,7 +10,7 @@ class BookListTest extends PHPUnit_Framework_TestCase
     public function testAddBooks()
     {
         $oBookList = new BookList();
-        $oBook1 = new Book();
+        $oBook1 = new Book(1);
         $oBookList->addBook($oBook1);
 
         $this->assertSame( array($oBook1), $oBookList->getBooks() );
@@ -20,8 +20,8 @@ class BookListTest extends PHPUnit_Framework_TestCase
     {
         $oBookList = new BookList();
 
-        $oBook1 = new Book();
-        $oBook2 = new Book();
+        $oBook1 = new Book(1);
+        $oBook2 = new Book(2);
         $oBookList->addBook($oBook1);
         $oBookList->addBook($oBook2);
 

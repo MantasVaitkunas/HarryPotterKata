@@ -7,10 +7,14 @@
  */
 
 class BookList implements Iterator {
+
+    /**
+     * @var array
+     */
     private $_aBooks;
 
     /**
-     * @return mixed
+     * @return array
      */
     public function getBooks()
     {
@@ -29,7 +33,7 @@ class BookList implements Iterator {
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Return the current element
      * @link http://php.net/manual/en/iterator.current.php
-     * @return mixed Can return any type.
+     * @return Book
      */
     public function current()
     {
@@ -51,7 +55,7 @@ class BookList implements Iterator {
      * (PHP 5 &gt;= 5.0.0)<br/>
      * Return the key of the current element
      * @link http://php.net/manual/en/iterator.key.php
-     * @return mixed scalar on success, or null on failure.
+     * @return int
      */
     public function key()
     {
@@ -67,7 +71,7 @@ class BookList implements Iterator {
      */
     public function valid()
     {
-        return is_int( current( $this->_aBooks ) );
+        return current( $this->_aBooks ) instanceof Book;
     }
 
     /**
