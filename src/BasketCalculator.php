@@ -22,7 +22,7 @@ class BasketCalculator {
      * @param BookList $oBookList
      * @return int
      */
-    public function calculate( $oBookList )
+    public function calculate( BookList $oBookList )
     {
         $dResult = 0;
         foreach ( $oBookList as $oBook ) {
